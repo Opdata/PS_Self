@@ -1,5 +1,5 @@
 # Default ignored files
-/.idea
+.idea
 /venv/Lib
 /venv/Scripts
 /venv/pyvenv.cfg
