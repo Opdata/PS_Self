@@ -8,11 +8,17 @@ class Solution:
             left += 1
             right -= 1
 
-# 개선
+# 개선1
+# class Solution:
+#     def reverseString(self, s) -> None:
+#         List[:] = s[::-1]
+
+# 개선2
 # class Solution:
 #     def reverseString(self, s) -> None:
 #         s.reverse()
 
 f = Solution()
 f.reverseString(List)
+print(List)
 
