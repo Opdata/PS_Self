@@ -7,15 +7,12 @@ class Solution:
         for char in s:
             if char.isalnum():
                 str1.append(char.lower())
+                str2.append(char.lower())
+        str2.reverse()
+        if str1 == str2:
+            return True
+        return False
 
-        for index in range(len(s) - 1, -1, -1):
-            if s[index].isalnum():
-                str1.append(s[index].lower())
-
-        for index in range(0, len(str2)):
-            if str1[index] != str2[index]:
-                return False
-        return True
 
 # 개선1
 #     def isPalindrome(self, s: str) -> bool:

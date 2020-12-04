@@ -1,41 +1,34 @@
-input = [-1,0,1,2,-1,-4]
+input = [3,0,-2,-1,1,2]
 # input = []
 # input = [0]
 
 class Solution:
     def threeSum(self, nums: list) -> list:
-        if len(nums) < 3:
-            return []
-
         result = []
         nums.sort()
         data = []
+        if len(nums) < 3:
+            return result
 
-        for i in range(len(nums)):
-            test = []
-            sum = 0
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                sum = nums[i] + nums[left] + nums[right]
+                if sum < 0:
+                    left += 1
+                elif sum > 0:
+                    right -= 1
+                else:
+                    result.append([nums[i], nums[left], nums[right]])
 
-            for j in range(i+1,len(nums)):
-              if nums[i] <= nums[j]:
-                  test.append(nums[j])
-
-            for k in range(len(test)):
-
-                sum = nums[i] + test[k]
-                for h in range(k+1,len(test)):
-
-                    if (test[h] + sum) == 0:
-                        data = [nums[i],test[k],test[h]]
-                        data.sort()
-
-                    if len(result) == 0 and len(data) != 0:
-                        result.append(data)
-                        data = []
-
-        for arr in result:
-            if arr != data and len(data) != 0:
-                result.append(data)
-                data = []
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    left += 1
+                    right -= 1
 
         return result
 

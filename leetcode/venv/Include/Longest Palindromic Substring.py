@@ -1,22 +1,24 @@
-input = "babad"
+# input = "babad"
+input = "aacabdkacaa"
 # input = "cbbd"
 # input = "a"
 # input = "ac"
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        if len(s) == 1:
+        result = []
+        if len(s) == 1 or s == s[::-1]:
             return s
+
         for left in range(0,len(s)):
             for right in range(len(s)-1,left-1,-1):
-                if len(s) == 2 and s[left] != s[right]:
-                    return s[left]
                 if s[left] == s[right]:
-                    midIndex = (left+right)//2
-                    leftList = s[left:midIndex+1]
-                    rightList = s[midIndex+1:left:-1]
-                    if leftList == rightList:
-                        return s[left:right+1]
+                    if s[left:right] == s[right:left:-1]:
+                        result.append(s[left:right+1])
+
+        result.sort(key=len, reverse=True)
+        return result[0]
+
 
 # 개선, 간단한 예외처리 및 여러개의 팰린드롬이 나오면 길이가 최대인것을 반환
 # class Solution:
