@@ -18,3 +18,6 @@ class Solution:
             return True
 
         return False
+
+# List에 복사하고 pop 하면서 값을 비교할 수도 있다.
+# Deque 를 사용하여 pop 보다 빠른 속도로 값을 비교 할 수 있다.
